@@ -1,0 +1,20 @@
+services:
+  zomboid:
+    image: danixu86/project-zomboid-dedicated-server:42.21-release-2
+    container_name: zomboid-server
+    restart: unless-stopped
+    stop_grace_period: 2m
+
+    env_file:
+      - .env
+
+    ports:
+      - "8766:8766/udp"
+      - "8767:8767/udp"
+      - "16261:16261/udp"
+      - "16262:16262/udp"
+      - "16262-16293:16262-16293/tcp"
+
+    volumes:
+      - ./data:/home/steam/Zomboid
+      - ./workshop-mods:/home/steam/pz-dedicated/steamapps/workshop

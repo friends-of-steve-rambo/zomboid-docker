@@ -1,0 +1,5 @@
+.env
+data/
+workshop-mods/
+backups/
+*.log
