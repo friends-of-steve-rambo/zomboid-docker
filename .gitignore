@@ -1,5 +1,6 @@
 .env
 data/
+data-friends/
 workshop-mods/
 backups/
 *.log
