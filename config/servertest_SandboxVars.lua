@@ -19,7 +19,7 @@ SandboxVars = {
     -- 2 = Normal
     -- 3 = Low
     -- 4 = None
-    ZombieRespawn = 4,
+    ZombieRespawn = 3,
     -- Zombie allowed to migrate to empty cells.
     ZombieMigrate = true,
     -- Default = 1 Hour, 30 Minutes
@@ -107,7 +107,7 @@ SandboxVars = {
     -- 7 = 2 - 6 Months
     -- 8 = 6 - 12 Months
     -- 9 = Disabled
-    WaterShut = 2,
+    WaterShut = 3,
     -- How long after the default start date (July 9, 1993) that the world's electricity turns off for good. Default = 14 - 30 Days
     -- 1 = Instant
     -- 2 = 14 - 30 Days
@@ -118,7 +118,7 @@ SandboxVars = {
     -- 7 = 2 - 6 Months
     -- 8 = 6 - 12 Months
     -- 9 = Disabled
-    ElecShut = 2,
+    ElecShut = 3,
     -- How long alarm batteries can last for after the power shuts off. Default = 0 - 30 Days
     -- 1 = Instant
     -- 2 = 0 - 30 Days
@@ -706,7 +706,7 @@ SandboxVars = {
     -- 4 = 1 point penalty for every negative trait selected after the first
     NegativeTraitsPenalty = 1,
     -- The number of in-game minutes it takes to read one page of a skill book. Min: 0.00 Max: 60.00 Default: 2.00
-    MinutesPerPage = 2.0,
+    MinutesPerPage = 0.5,
     -- When enabled, crops and herbs grown inside buildings will die. Does not affect houseplants.
     KillInsideCrops = true,
     -- When enabled, the growth of plants is affected by seasons.
@@ -791,7 +791,7 @@ SandboxVars = {
         -- 4 = Random
         Speed = 4,
         -- If Random Speed is enabled, this controls what percentage of zombies are Sprinters. Check the "Advanced" box below to use a custom percentage. Min: 0 Max: 100 Default: 0
-        SprinterPercentage = 0,
+        SprinterPercentage = 0.5,
         -- The damage zombies inflict per attack. Default = Normal
         -- 1 = Superhuman
         -- 2 = Normal
@@ -809,7 +809,7 @@ SandboxVars = {
         -- 2 = Saliva Only
         -- 3 = Everyone's Infected
         -- 4 = None
-        Transmission = 1,
+        Transmission = 2,
         -- How quickly the infection takes effect. Default = 2-3 Days
         -- 1 = Instant
         -- 2 = 0-30 Seconds
@@ -943,7 +943,7 @@ SandboxVars = {
     },
     MultiplierConfig = {
         -- The rate at which all skills level up. Min: 0.00 Max: 1000.00 Default: 1.00
-        Global = 1.0,
+        Global = 2.0,
         -- When enabled, all skills will use the Global Multiplier.
         GlobalToggle = true,
         -- Rate at which Fitness skill levels up. Min: 0.00 Max: 1000.00 Default: 1.00
