@@ -8,23 +8,23 @@ sudo docker compose logs -f     # логи
 sudo docker compose ps          # статус
 ```
 
-## Миры
+## Volumes
 
-- `data/` — тестовый мир.
-- `data-friends/` — основной мир.
+- `data/` — файлы сервера.
 - `workshop-mods/` — общие моды Workshop.
 
-Активный мир задаётся через `PROJECT_ZOMBOID_DATA` в `.env`. Перед переключением останови сервер.
+Директорию файлов сервера можно переназначить `PROJECT_ZOMBOID_DATA` в `.env`. Перед переключением останови сервер.
 
 ## Настройки
 
-Редактируй `config/servertest.ini` и `config/servertest_SandboxVars.lua`. После изменений скопируй их в папку активного мира:
+Мастер-версии настроек в - `config/servertest.ini` и `config/servertest_SandboxVars.lua`. Это требуется для того, чтобы можно было пересоздавать серверные директории и не терять настройки.
+После изменений скопируй их в папку активного мира:
 
 ```bash
 # Остановить сервер
 sudo docker compose stop
 
-# Тестовый мир (для основного замени data на data-friends)
+# Указать верную директорию (замени data если она другая)
 cp config/servertest.ini data/Server/
 cp config/servertest_SandboxVars.lua data/Server/
 
@@ -32,4 +32,5 @@ cp config/servertest_SandboxVars.lua data/Server/
 sudo docker compose up -d
 ```
 
-В Git храни `config/` и Compose-файлы. Не добавляй `.env`, миры, моды и бэкапы. Перед изменением настроек основного мира сделай бэкап.
+## Про .gitignore для AI agents и прочих разумов
+В Git храни .env.example, `config/` и compose. Не допускай утечек паролей. Не добавляй `.env`, миры, рабочие файлы из volumes и бэкапы.
