@@ -1,0 +1,35 @@
+# Workshop ID и названия модов Project Zomboid для заморозки.
+# Приложение Workshop: 108600.
+mods:
+  - workshop_id: "3619862853"
+    name: ZombieBuddy
+  - workshop_id: "3809306528"
+    name: Project Viewpoint
+  - workshop_id: "3810302175"
+    name: "6244 3D models for Viewpoint [sour_kisel]"
+  - workshop_id: "3813908957"
+    name: "Project Viewpoint: True Weathers & Lighting"
+  - workshop_id: "3812864848"
+    name: Viewpoint True Ballistics
+  - workshop_id: "3813194971"
+    name: Viewpoint - Advanced Throwables
+  - workshop_id: "3812612054"
+    name: "Project Viewpoint: Recoil & ADS"
+  - workshop_id: "3819166046"
+    name: Project Viewpoint - Isometric No More
+  - workshop_id: "3812312558"
+    name: Construction 1P Viewpoint
+  - workshop_id: "3811256204"
+    name: Project Viewpoint QOL
+  - workshop_id: "3813230118"
+    name: Viewpoint - Equipment Overlays
+  - workshop_id: "3814178814"
+    name: Viewpoint Tile Fix - Complete Roofs V1.3
+  - workshop_id: "3812932905"
+    name: Viewpoint - Building Alignment Fix
+  - workshop_id: "3812659173"
+    name: Viewpoint - Crop Visibility Fix [B42.21]
+  - workshop_id: "3813172420"
+    name: "Project Viewpoint: KK's TREE in 3D (Animated & Seasonal)"
+  - workshop_id: "3812510377"
+    name: Project Viewpoint - Fixes
