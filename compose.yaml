@@ -4,6 +4,8 @@ services:
     container_name: zomboid-server
     restart: unless-stopped
     stop_grace_period: 120s
+    labels:
+      zomboid-panel.managed: "true"
 
     env_file:
       - .env
@@ -20,3 +22,35 @@ services:
       - ${PROJECT_ZOMBOID_WORKSHOP_MODS:-./workshop-mods}:/home/steam/pz-dedicated/steamapps/workshop
       # Только для версии образа с ZombieBuddy
       - ./config/ProjectZomboid64.json:/home/steam/pz-dedicated/ProjectZomboid64.json:ro
+
+  panel:
+    image: ghcr.io/fpsacha/zomboid-panel:1.5.2
+    container_name: zomboid-panel
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:3001:3001"
+
+    group_add:
+      # GID сокета Docker: stat -c '%g' /var/run/docker.sock
+      - "${DOCKER_GID:?set DOCKER_GID in .env}"
+
+    environment:
+      # Пути внутри контейнера панели; lifecycle PZ управляется через Docker.
+      PZ_SERVER_PATH: /pz-server
+      PZ_SAVE_PATH: /zomboid
+      RCON_HOST: zomboid
+      RCON_PORT: "27015"
+      RCON_PASSWORD: ${RCONPASSWORD:?set RCONPASSWORD in .env}
+      PANEL_DOCKER_CONTROL_ENABLED: "true"
+
+    volumes:
+      - ${PROJECT_ZOMBOID_DATA:-./data}:/zomboid
+      - ${PROJECT_ZOMBOID_WORKSHOP_MODS:-./workshop-mods}:/pz-server/steamapps/workshop:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - panel-data:/app/data
+      - panel-logs:/app/logs
+
+volumes:
+  panel-data:
+  panel-logs:
