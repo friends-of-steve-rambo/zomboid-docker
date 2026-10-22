@@ -2,6 +2,9 @@
 data/
 data-friends/
 workshop-mods/
-mods-download/
+mod-freeze/client/
+mod-freeze/download/
+mod-freeze/dist/
+__pycache__/
 backups/
 *.log

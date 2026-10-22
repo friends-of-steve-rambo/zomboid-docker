@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Скачивает все Workshop-моды из mods.yaml через SteamCMD."""
+"""Скачивает все Workshop-моды из mods.yaml через SteamCMD в mod-freeze/download/."""
 
 import shutil
 import subprocess
@@ -8,10 +8,10 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
-DEST = ROOT / "mods-download"
+FEATURE_ROOT = Path(__file__).resolve().parent.parent
+DEST = FEATURE_ROOT / "download"
 
-mods = yaml.safe_load((ROOT / "mods.yaml").read_text(encoding="utf-8"))["mods"]
+mods = yaml.safe_load(Path(__file__).with_name("mods.yaml").read_text(encoding="utf-8"))["mods"]
 
 if shutil.which("steamcmd") is None:
     sys.exit("steamcmd не найден в PATH")
