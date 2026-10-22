@@ -18,3 +18,5 @@ services:
     volumes:
       - ${PROJECT_ZOMBOID_DATA:-./data}:/home/steam/Zomboid
       - ${PROJECT_ZOMBOID_WORKSHOP_MODS:-./workshop-mods}:/home/steam/pz-dedicated/steamapps/workshop
+      # Только для версии образа с ZombieBuddy
+      - ./config/ProjectZomboid64.json:/home/steam/pz-dedicated/ProjectZomboid64.json:ro

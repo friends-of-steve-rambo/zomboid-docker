@@ -1,0 +1,18 @@
+{
+	"mainClass": "zombie/network/GameServer",
+	"classpath": [
+		"java/.",
+		"java/projectzomboid.jar"
+	],
+	"vmArgs": [
+		"-javaagent:/home/steam/pz-dedicated/steamapps/workshop/content/108600/3619862853/mods/ZombieBuddy/libs/ZombieBuddy.jar=policy=allow-all",
+		"-Djava.awt.headless=true",
+		"-Xmx8g",
+		"-Dzomboid.steam=1",
+		"-Dzomboid.znetlog=1",
+		"-Djava.library.path=linux64/",
+		"-Djava.security.egd=file:/dev/urandom",
+		"-XX:+UseZGC",
+		"-XX:-OmitStackTraceInFastThrow"
+	]
+}

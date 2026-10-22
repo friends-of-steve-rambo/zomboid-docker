@@ -19,6 +19,19 @@ sudo docker compose ps          # статус
 
 Всё для сборки замороженной версии модов для сервера и клиента лежит в `mod-freeze/`
 
+## ZombieBuddy
+
+ZombieBuddy — Java-agent, одного Workshop-мода недостаточно. В `config/ProjectZomboid64.json` добавлен `-javaagent:/home/steam/pz-dedicated/steamapps/workshop/content/108600/3619862853/mods/ZombieBuddy/libs/ZombieBuddy.jar=policy=allow-all` в `vmArgs`; файл смонтирован в контейнер. `policy=allow-all` — только для доверенных Java-модов.
+
+На чистой установке сначала запусти сервер без этой строки, чтобы скачались моды, затем добавь её и перезапусти контейнер.
+
+## Хост (TODO: проверить актуальность заметки)
+
+PZ рекурсивно следит за каталогами; без запаса inotify-watch в логах `User limit of inotify watches reached`, старт может упасть.
+
+    echo 'fs.inotify.max_user_watches=524288' | sudo tee /etc/sysctl.d/99-zomboid.conf
+    sudo sysctl --system
+
 ## Настройки
 
 Мастер-версии настроек в - `config/servertest.ini` и `config/servertest_SandboxVars.lua`. Это требуется для того, чтобы можно было пересоздавать серверные директории и не терять настройки.
