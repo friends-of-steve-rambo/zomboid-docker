@@ -7,12 +7,12 @@
 # depends_on - ссылки на mod_id. Скрипт поставит зависимости перед модом
 
 mods:
-  - name: ZombieBuddy
+  - name: "ZombieBuddy"
     workshop_id: "3619862853"
     mod_ids:
       - ZombieBuddy
 
-  - name: Project Viewpoint
+  - name: "Project Viewpoint"
     workshop_id: "3809306528"
     mod_ids:
       - Viewpoint
@@ -27,7 +27,7 @@ mods:
       - ZombieBuddy
       - Viewpoint
 
-  - name: Viewpoint True Ballistics
+  - name: "Viewpoint True Ballistics"
     workshop_id: "3812864848"
     mod_ids:
       - ViewpointTrueBallistics
@@ -35,7 +35,7 @@ mods:
       - ZombieBuddy
       - Viewpoint
 
-  - name: Viewpoint Advanced Throwables
+  - name: "Viewpoint Advanced Throwables"
     workshop_id: "3813194971"
     mod_ids:
       - ViewpointAdvancedThrowables
@@ -49,7 +49,7 @@ mods:
   #     - BSU
 
 ### АВТОМОБИЛИ/ТРАНСПОРТ ###
-  - name: Tsar's Common Library B42
+  - name: "Tsar's Common Library B42"
     workshop_id: "3402491515"
     mod_ids:
       - tsarslib
@@ -61,7 +61,9 @@ mods:
     depends_on:
       - tsarslib
 
-  - name: that DAMN Library
+  # KI5's vehicle collection — https://steamcommunity.com/sharedfiles/filedetails/?id=2490220997
+  # that DAMN Library (обязательная зависимость для всех модов KI5).
+  - name: "that DAMN Library"
     workshop_id: "3171167894"
     mod_ids:
       - damnlib
@@ -70,6 +72,275 @@ mods:
     workshop_id: "3820938264"
     mod_ids:
       - 67chevyImpala
+    depends_on:
+      - damnlib
+
+  - name: "'91 RANGE ROVER Classic"
+    workshop_id: "2409333430"
+    mod_ids:
+      - 91range
+    depends_on:
+      - damnlib
+
+  - name: "'74 AM General M151A2 MUTT"
+    workshop_id: "2785549133"
+    mod_ids:
+      - 74amgeneralM151A2
+    depends_on:
+      - damnlib
+
+  - name: "'84 Mercedes Benz W460"
+    workshop_id: "2805630347"
+    mod_ids:
+      - 84merc
+    depends_on:
+      - damnlib
+
+  - name: "'92 NISSAN Skyline GT-R (R32)"
+    workshop_id: "2846036306"
+    mod_ids:
+      - 92nissanGTR
+    depends_on:
+      - damnlib
+
+  - name: "'86 Ford Econoline E-150 + Pop Culture vans"
+    workshop_id: "2870394916"
+    mod_ids:
+      - 86fordE150
+      - 86fordE150dnd
+      - 86fordE150mm
+      - 86fordE150pd
+      - 86fordE150expanded
+    depends_on:
+      - damnlib
+
+  - name: "'70 Dodge Challenger"
+    workshop_id: "2873290424"
+    mod_ids:
+      - 70dodge
+    depends_on:
+      - damnlib
+
+  - name: "'82 Jeep J10"
+    workshop_id: "2886832257"
+    mod_ids:
+      - 82jeepJ10
+      - 82jeepJ10t
+    depends_on:
+      - damnlib
+
+  - name: "'88 Chevrolet S10"
+    workshop_id: "2886832936"
+    mod_ids:
+      - 88chevyS10
+    depends_on:
+      - damnlib
+
+  - name: "'89 Ford Bronco"
+    workshop_id: "2886833398"
+    mod_ids:
+      - 89fordBronco
+    depends_on:
+      - damnlib
+
+  - name: "'49 Dodge Power Wagon Crew Cab"
+    workshop_id: "2900580391"
+    mod_ids:
+      - 49powerWagon
+    depends_on:
+      - damnlib
+
+  - name: "'89 Isuzu Trooper"
+    workshop_id: "2932549988"
+    mod_ids:
+      - 89trooper
+    depends_on:
+      - damnlib
+
+  - name: "'69 Mini Mk2"
+    workshop_id: "2937786633"
+    mod_ids:
+      - 69mini
+      - 69mini_ItalianJob
+      - 69mini_MrBean
+      - 69mini_PitbullSpecial
+    depends_on:
+      - damnlib
+
+  - name: "'90 Pierce Arrow Pumper and Ladder Trucks"
+    workshop_id: "2942793445"
+    mod_ids:
+      - 90pierceArrow
+    depends_on:
+      - damnlib
+
+  - name: "'90 Ford F350 Ambulance"
+    workshop_id: "2952802178"
+    mod_ids:
+      - 90fordF350ambulance
+    depends_on:
+      - damnlib
+
+  - name: "'92 Ford Crown Victoria"
+    workshop_id: "2962175696"
+    mod_ids:
+      - 92fordCVPI
+    depends_on:
+      - damnlib
+
+  - name: "'63 Volkswagen 1300 Beetle"
+    workshop_id: "3005903549"
+    mod_ids:
+      - 63beetle
+    depends_on:
+      - damnlib
+
+  - name: "'63 Volkswagen Type 2 Van"
+    workshop_id: "3041122351"
+    mod_ids:
+      - 63Type2Van
+    depends_on:
+      - damnlib
+
+  - name: "'87 Toyota MR2"
+    workshop_id: "3052360250"
+    mod_ids:
+      - 87toyotaMR2
+    depends_on:
+      - damnlib
+
+  - name: "'93 Ford Taurus"
+    workshop_id: "3088951320"
+    mod_ids:
+      - 93fordTaurus
+    depends_on:
+      - damnlib
+
+  - name: "'90 BMW 3 Series (E30)"
+    workshop_id: "3110913021"
+    mod_ids:
+      - 90bmwE30
+    depends_on:
+      - damnlib
+
+  - name: "'49 Ford 8N Tractor"
+    workshop_id: "3171176891"
+    mod_ids:
+      - 49ford8N
+    depends_on:
+      - damnlib
+
+  - name: "'87 Chevrolet Suburban"
+    workshop_id: "3196180339"
+    mod_ids:
+      - 87chevySuburban
+    depends_on:
+      - damnlib
+
+  - name: "'87 Buick Regal"
+    workshop_id: "3226885926"
+    mod_ids:
+      - 87buickRegal
+    depends_on:
+      - damnlib
+
+  - name: "'81 DeLorean DMC-12"
+    workshop_id: "3253385114"
+    mod_ids:
+      - 81deloreanDMC12
+      - 81deloreanDMC12BTTF
+    depends_on:
+      - damnlib
+
+  - name: "'68 Pontiac Firebird"
+    workshop_id: "3258343790"
+    mod_ids:
+      - 68firebird
+    depends_on:
+      - damnlib
+
+  - name: "'85 Club Car Golf Cart"
+    workshop_id: "3330401526"
+    mod_ids:
+      - 85clubMan
+    depends_on:
+      - damnlib
+
+  - name: "'82 Porsche 911"
+    workshop_id: "3379334330"
+    mod_ids:
+      - 82porsche911
+    depends_on:
+      - damnlib
+
+  - name: "'84 Jeep XJ Cherokee"
+    workshop_id: "3409287192"
+    mod_ids:
+      - 84jeepXJ
+    depends_on:
+      - damnlib
+
+  - name: "'88 Toyota Hilux"
+    workshop_id: "3435796523"
+    mod_ids:
+      - 88toyotaHilux
+    depends_on:
+      - damnlib
+
+  - name: "'91 Nissan 240SX"
+    workshop_id: "3504401781"
+    mod_ids:
+      - 91nissan240sx
+    depends_on:
+      - damnlib
+
+  - name: "'89 LAND ROVER Defender"
+    workshop_id: "3570973322"
+    mod_ids:
+      - 89defender
+    depends_on:
+      - damnlib
+
+  - name: "'69 Dodge Charger"
+    workshop_id: "3631989559"
+    mod_ids:
+      - 69charger
+    depends_on:
+      - damnlib
+
+  - name: "'70 Ford Escort"
+    workshop_id: "3670063857"
+    mod_ids:
+      - 70fordEscort
+    depends_on:
+      - damnlib
+
+  - name: "'84 Chevrolet Corvette"
+    workshop_id: "3684254299"
+    mod_ids:
+      - 84corvette
+    depends_on:
+      - damnlib
+
+  - name: "'73 NISSAN Skyline GT-R"
+    workshop_id: "3743371090"
+    mod_ids:
+      - 73nissanGTR
+    depends_on:
+      - damnlib
+
+  - name: "'69 Ford Mustang"
+    workshop_id: "3756938756"
+    mod_ids:
+      - 69fordMustang
+      - 69fordMustangExtra
+    depends_on:
+      - damnlib
+
+  - name: "'92 Volkswagen Golf Mk2"
+    workshop_id: "3812024929"
+    mod_ids:
+      - 92vwGolfMk2
     depends_on:
       - damnlib
 
