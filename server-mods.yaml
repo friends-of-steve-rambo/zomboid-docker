@@ -23,14 +23,6 @@ mods:
     depends_on:
       - ZombieBuddy
 
-  - name: Project Viewpoint QOL
-    workshop_id: "3811256204"
-    mod_ids:
-      - ProjectViewpointQOL
-    depends_on:
-      - ZombieBuddy
-      - Viewpoint
-
   - name: "Project Viewpoint: Recoil & ADS"
     workshop_id: "3812612054"
     mod_ids:
@@ -51,15 +43,6 @@ mods:
     workshop_id: "3813194971"
     mod_ids:
       - ViewpointAdvancedThrowables
-    depends_on:
-      - ZombieBuddy
-      - Viewpoint
-
-  - name: "Project Viewpoint: True Weathers & Lighting"
-    workshop_id: "3813908957"
-    mod_ids:
-      - ViewpointTrueWeathers
-      - ViewpointTrueWeathersGameplay
     depends_on:
       - ZombieBuddy
       - Viewpoint
