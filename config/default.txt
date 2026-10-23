@@ -1,4 +1,4 @@
-# Only keys that differ from the game defaults are listed here.
+# Тут ключи только отличные от дефолтов. Их надо перенести в соответствующие файлы
 
 [servertest.ini]
 AntiCheat*=3 (all 2 to 3)

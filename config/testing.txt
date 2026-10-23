@@ -1,4 +1,4 @@
-# Testing server mode.
+# Настройки для тестирования
 
 [servertest.ini]
 SafetySystem=false
