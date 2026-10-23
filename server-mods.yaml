@@ -1,0 +1,94 @@
+# Реестр модов сервера Project Zomboid.
+#
+# Это источник истины для WORKSHOP_IDS и MOD_IDS в .env.
+# После изменений выполните: python3 scripts/sync_mods_env.py
+#
+# Порядок записей — приоритет для независимых модов.
+# depends_on — ссылки на mod_id или workshop_id из этого же списка.
+# Скрипт сам ставит зависимости перед модом, в каком бы порядке они ни были записаны.
+#
+# workshop_id  — ID предмета Workshop (число после ?id= в ссылке Steam).
+# mod_ids      — идентификаторы из mod.info; у одного Workshop-предмета
+#                их может быть несколько (они загрузятся подряд).
+mods:
+  - name: ZombieBuddy
+    workshop_id: "3619862853"
+    mod_ids:
+      - ZombieBuddy
+
+  - name: Project Viewpoint
+    workshop_id: "3809306528"
+    mod_ids:
+      - Viewpoint
+    depends_on:
+      - ZombieBuddy
+
+  - name: Project Viewpoint QOL
+    workshop_id: "3811256204"
+    mod_ids:
+      - ProjectViewpointQOL
+    depends_on:
+      - ZombieBuddy
+      - Viewpoint
+
+  - name: "Project Viewpoint: Recoil & ADS"
+    workshop_id: "3812612054"
+    mod_ids:
+      - ProjectViewpointADS
+    depends_on:
+      - ZombieBuddy
+      - Viewpoint
+
+  - name: Viewpoint True Ballistics
+    workshop_id: "3812864848"
+    mod_ids:
+      - ViewpointTrueBallistics
+    depends_on:
+      - ZombieBuddy
+      - Viewpoint
+
+  - name: Viewpoint Advanced Throwables
+    workshop_id: "3813194971"
+    mod_ids:
+      - ViewpointAdvancedThrowables
+    depends_on:
+      - ZombieBuddy
+      - Viewpoint
+
+  - name: "Project Viewpoint: True Weathers & Lighting"
+    workshop_id: "3813908957"
+    mod_ids:
+      - ViewpointTrueWeathers
+      - ViewpointTrueWeathersGameplay
+    depends_on:
+      - ZombieBuddy
+      - Viewpoint
+
+  - name: Better Server Updater
+    workshop_id: "3739959752"
+    mod_ids:
+      - BSU
+
+  - name: Tsar's Common Library B42
+    workshop_id: "3402491515"
+    mod_ids:
+      - tsarslib
+
+  - name: Autotsar Motor Club B42
+    workshop_id: "3404737883"
+    mod_ids:
+      - amclub
+    depends_on:
+      - tsarslib
+
+  - name: that DAMN Library
+    workshop_id: "3171167894"
+    mod_ids:
+      - damnlib
+
+  - name: "'67 Chevrolet Impala"
+    workshop_id: "3820938264"
+    mod_ids:
+      - 67chevyImpala
+    depends_on:
+      - damnlib
