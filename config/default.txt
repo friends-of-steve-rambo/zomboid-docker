@@ -1,0 +1,17 @@
+# Only keys that differ from the game defaults are listed here.
+
+[servertest.ini]
+AntiCheat*=3 (all 2 to 3)
+DoLuaChecksum=false
+SafetySystem=false
+PlayerSafehouse=true
+SafehouseAllowRespawn=true
+
+[servertest_SandboxVars.lua]
+ZombieLore.Transmission=2
+ZombieLore.SprinterPercentage=1
+ZombieRespawn=3
+WaterShut=3
+ElecShut=3
+MultiplierConfig.Global=2.0
+MinutesPerPage=0.5

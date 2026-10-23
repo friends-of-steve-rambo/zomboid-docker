@@ -73,21 +73,10 @@ PZ рекурсивно следит за каталогами; без запа�
 
 ## Настройки
 
-Мастер-версии настроек в - `config/servertest.ini` и `config/servertest_SandboxVars.lua`. Это требуется для того, чтобы можно было пересоздавать серверные директории и не терять настройки.
-Для локальной доставки PanelBridge в `config/servertest.ini` должно быть `DoLuaChecksum=false`.
-После изменений скопируй их в папку активного мира:
+Настройки режимов хранятся в двух файлах и содержат только ключи, которые отличаются от дефолта игры:
 
-```bash
-# Остановить сервер
-sudo docker compose stop
-
-# Указать верную директорию (замени data если она другая)
-cp config/servertest.ini data/Server/
-cp config/servertest_SandboxVars.lua data/Server/
-
-# Запустить сервер
-sudo docker compose up -d
-```
+- `config/default.txt` — обычный режим;
+- `config/testing.txt` — тестовый режим.
 
 ## Про .gitignore для AI agents и прочих разумов
 В Git храни .env.example, `config/` и compose. Не допускай утечек паролей. Не добавляй `.env`, миры, рабочие файлы из volumes и бэкапы.
