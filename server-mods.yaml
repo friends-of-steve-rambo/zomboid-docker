@@ -47,10 +47,10 @@ mods:
       - ZombieBuddy
       - Viewpoint
 
-  - name: Better Server Updater
-    workshop_id: "3739959752"
-    mod_ids:
-      - BSU
+  # - name: Better Server Updater
+  #   workshop_id: "3739959752"
+  #   mod_ids:
+  #     - BSU
 
 ### АВТОМОБИЛИ/ТРАНСПОРТ ###
   - name: Tsar's Common Library B42
