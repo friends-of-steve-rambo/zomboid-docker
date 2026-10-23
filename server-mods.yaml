@@ -52,6 +52,7 @@ mods:
     mod_ids:
       - BSU
 
+### АВТОМОБИЛИ/ТРАНСПОРТ ###
   - name: Tsar's Common Library B42
     workshop_id: "3402491515"
     mod_ids:
@@ -75,3 +76,9 @@ mods:
       - 67chevyImpala
     depends_on:
       - damnlib
+
+### ОДЕЖДА ###
+  - name: "Vanilla Outfits Expanded"
+    workshop_id: "3783094058"
+    mod_ids:
+      - VanillaOutfitsExpanded
