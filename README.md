@@ -35,20 +35,20 @@ PanelBridge установлен локально, панель и сервер 
 
 ## Моды сервера
 
-Черновик модов хранится в `server-mods.yaml`. Их НАДО перенести в настоящий конфиг сервера.
+`server-mods.yaml` — источник истины; скрипт пишет `WorkshopItems` и `Mods` в `data/Server/servertest.ini`.
 
 Добавить или удалить мод:
 
 ```bash
 # 0. Показать список
-python3 scripts/sync_mods_env.py --show-order
+python3 scripts/sync_mods_ini.py --show-order
 
 # 1. Отредактировать server-mods.yaml
-# 2. Перегенерировать строки в конфигах
-python3 scripts/sync_mods_env.py
+# 2. Остановить сервер и обновить server .ini
+python3 scripts/sync_mods_ini.py
 
 # Проверить, что конфиг не разошёлся с YAML
-python3 scripts/sync_mods_env.py --check
+python3 scripts/sync_mods_ini.py --check
 ```
 
 ## ZombieBuddy

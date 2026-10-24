@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Заполняет WORKSHOP_IDS и MOD_IDS в .env из server-mods.yaml.
+"""Синхронизирует WorkshopItems и Mods в server .ini из server-mods.yaml.
 
 Зависимости из depends_on разрешаются по mod_id или workshop_id и
 учитываются при сортировке: зависимость всегда идёт перед модом.
@@ -13,7 +13,7 @@ from pathlib import Path
 
 FEATURE_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MODS = FEATURE_ROOT / "server-mods.yaml"
-DEFAULT_ENV = FEATURE_ROOT / ".env"
+DEFAULT_CONFIG = FEATURE_ROOT / "data" / "Server" / "servertest.ini"
 
 WORKSHOP_RE = re.compile(r"^\d+$")
 MOD_ID_RE = re.compile(r"^[A-Za-z0-9_.-]+$")
@@ -182,36 +182,48 @@ def sort_entries(path: Path, entries: list[ModEntry]) -> list[ModEntry]:
     return ordered
 
 
-def render_env(text: str, workshop_ids: list[str], mod_ids: list[str]) -> str:
-    workshop_line = "WORKSHOP_IDS=" + ";".join(workshop_ids)
-    # Двойной обратный слэш — как в конфиге PZ: \\ModID означает Workshop-мод.
-    mod_line = "MOD_IDS=" + ";".join(f"\\\\{mod_id}" for mod_id in mod_ids)
+def render_config(
+    text: str, workshop_ids: list[str], mod_ids: list[str]
+) -> str:
+    """Обновляет только WorkshopItems и Mods, сохраняя остальные настройки."""
+    replacements = {
+        "WorkshopItems": "WorkshopItems=" + ";".join(workshop_ids),
+        # В server .ini используются внутренние Mod ID без префикса обратного слэша.
+        "Mods": "Mods=" + ";".join(mod_ids),
+    }
 
+    newline = "\r\n" if "\r\n" in text else "\n"
     lines = text.splitlines()
-    found_workshop = False
-    found_mod = False
-    for index, line in enumerate(lines):
-        if line.startswith("WORKSHOP_IDS="):
-            lines[index] = workshop_line
-            found_workshop = True
-        elif line.startswith("MOD_IDS="):
-            lines[index] = mod_line
-            found_mod = True
+    found: set[str] = set()
 
-    if not (found_workshop and found_mod):
+    for index, line in enumerate(lines):
+        stripped = line.lstrip()
+        for key, replacement in replacements.items():
+            if stripped.startswith(key + "="):
+                # Сохраняем отступ, если он был.
+                indent = line[: len(line) - len(stripped)]
+                lines[index] = indent + replacement
+                found.add(key)
+                break
+
+    missing = [key for key in replacements if key not in found]
+    if missing:
         if lines and lines[-1].strip():
             lines.append("")
-        if not found_workshop:
-            lines.append(workshop_line)
-        if not found_mod:
-            lines.append(mod_line)
+        lines.extend(replacements[key] for key in missing)
 
-    return "\n".join(lines) + "\n"
+    # PZ пишет .ini без завершающего перевода строки; сохраняем исходный вариант,
+    # иначе --check всегда показывает расхождение.
+    trailing = newline if text.endswith(("\n", "\r")) else ""
+    return newline.join(lines) + trailing
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Заполнить WORKSHOP_IDS и MOD_IDS в .env из server-mods.yaml"
+        description=(
+            "Синхронизировать WorkshopItems и Mods в server .ini "
+            "из server-mods.yaml"
+        )
     )
     parser.add_argument(
         "--mods",
@@ -220,20 +232,20 @@ def main() -> int:
         help=f"файл со списком модов (по умолчанию {DEFAULT_MODS.name})",
     )
     parser.add_argument(
-        "--env",
+        "--config",
         type=Path,
-        default=DEFAULT_ENV,
-        help=f"файл .env для обновления (по умолчанию {DEFAULT_ENV.name})",
+        default=DEFAULT_CONFIG,
+        help=f"server .ini (по умолчанию {DEFAULT_CONFIG})",
     )
     parser.add_argument(
         "--check",
         action="store_true",
-        help="только проверить, что .env синхронизирован, ничего не записывать",
+        help="только проверить синхронизацию, ничего не записывать",
     )
     parser.add_argument(
         "--show-order",
         action="store_true",
-        help="показать итоговый порядок загрузки с учётом зависимостей",
+        help="показать порядок загрузки с учётом зависимостей",
     )
     args = parser.parse_args()
 
@@ -248,24 +260,31 @@ def main() -> int:
     workshop_ids = [entry.workshop_id for entry in entries]
     mod_ids = [mod_id for entry in entries for mod_id in entry.mod_ids]
 
-    if not args.env.is_file():
-        sys.exit(f"Нет файла .env: {args.env}")
+    if not args.config.is_file():
+        sys.exit(
+            f"Нет конфигурации сервера: {args.config}\n"
+            "Убедитесь, что сервер хотя бы один раз запускался, "
+            "и проверьте путь через --config."
+        )
 
-    old_text = args.env.read_text(encoding="utf-8")
-    new_text = render_env(old_text, workshop_ids, mod_ids)
+    old_text = args.config.read_text(encoding="utf-8")
+    new_text = render_config(old_text, workshop_ids, mod_ids)
 
     if args.check:
         if old_text != new_text:
-            print(f"{args.env} не синхронизирован с {args.mods}", file=sys.stderr)
+            print(
+                f"{args.config} не синхронизирован с {args.mods}",
+                file=sys.stderr,
+            )
             return 1
-        print(f"{args.env} синхронизирован")
+        print(f"{args.config} синхронизирован")
         return 0
 
     if old_text != new_text:
-        args.env.write_text(new_text, encoding="utf-8")
-        print(f"Обновлён {args.env}")
+        args.config.write_text(new_text, encoding="utf-8")
+        print(f"Обновлён {args.config}")
     else:
-        print(f"{args.env} уже синхронизирован")
+        print(f"{args.config} уже синхронизирован")
 
     print(f"Workshop ID: {len(workshop_ids)}")
     print(f"Mod ID:      {len(mod_ids)}")
