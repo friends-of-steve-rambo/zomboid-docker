@@ -81,13 +81,6 @@ mods:
     depends_on:
       - damnlib
 
-  - name: "'74 AM General M151A2 MUTT"
-    workshop_id: "2785549133"
-    mod_ids:
-      - 74amgeneralM151A2
-    depends_on:
-      - damnlib
-
   - name: "'84 Mercedes Benz W460"
     workshop_id: "2805630347"
     mod_ids:
@@ -222,13 +215,6 @@ mods:
     depends_on:
       - damnlib
 
-  - name: "'49 Ford 8N Tractor"
-    workshop_id: "3171176891"
-    mod_ids:
-      - 49ford8N
-    depends_on:
-      - damnlib
-
   - name: "'87 Chevrolet Suburban"
     workshop_id: "3196180339"
     mod_ids:
@@ -255,13 +241,6 @@ mods:
     workshop_id: "3258343790"
     mod_ids:
       - 68firebird
-    depends_on:
-      - damnlib
-
-  - name: "'85 Club Car Golf Cart"
-    workshop_id: "3330401526"
-    mod_ids:
-      - 85clubMan
     depends_on:
       - damnlib
 
