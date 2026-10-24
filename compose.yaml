@@ -26,7 +26,7 @@ services:
       - ./config/ProjectZomboid64.json:/home/steam/pz-dedicated/ProjectZomboid64.json:ro
 
   panel:
-    image: ghcr.io/fpsacha/zomboid-panel:1.5.2
+    image: ghcr.io/fpsacha/zomboid-panel:latest
     container_name: zomboid-panel
     restart: unless-stopped
 
