@@ -6,17 +6,19 @@ services:
     stop_grace_period: 120s
     labels:
       zomboid-panel.managed: "true"
-
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     env_file:
       - .env
-
     ports:
       - "8766:8766/udp"
       - "8767:8767/udp"
       - "${PORT:-16261}:${PORT:-16261}/udp"
       - "${UDPPORT:-16262}:${UDPPORT:-16262}/udp"
       - "16262-16293:16262-16293/tcp"
-
     volumes:
       - ${PROJECT_ZOMBOID_DATA:-./data}:/home/steam/Zomboid
       - ${PROJECT_ZOMBOID_WORKSHOP_MODS:-./workshop-mods}:/home/steam/pz-dedicated/steamapps/workshop
@@ -29,14 +31,11 @@ services:
     image: ghcr.io/fpsacha/zomboid-panel:latest
     container_name: zomboid-panel
     restart: unless-stopped
-
     ports:
       - "127.0.0.1:3001:3001"
-
     group_add:
       # GID сокета Docker: stat -c '%g' /var/run/docker.sock
       - "${DOCKER_GID:?set DOCKER_GID in .env}"
-
     environment:
       # Пути внутри контейнера панели; lifecycle PZ управляется через Docker.
       PZ_SERVER_PATH: /pz-server
@@ -45,7 +44,6 @@ services:
       RCON_PORT: "27015"
       RCON_PASSWORD: ${RCONPASSWORD:?set RCONPASSWORD in .env}
       PANEL_DOCKER_CONTROL_ENABLED: "true"
-
     volumes:
       - ${PROJECT_ZOMBOID_DATA:-./data}:/zomboid
       # PanelBridge local delivery: панель пишет сюда, PZ читает файл выше.
