@@ -20,7 +20,7 @@ ssh -L 3001:127.0.0.1:3001 admin@<IP_СЕРВЕРА>
 
 Откройте `http://localhost:3001` и войдите под админским аккаунтом.
 
-- PanelBridge — локальная связь панели с сервером: `panelbridge/media/lua/server/PanelBridge.lua`.
+- Настройки — загрузите `config/server-default.pztemplate.json` в панели (Templates → Import) и примените к серверу.
 - Моды — только через Workshop-коллекцию в панели; панель сама обновляет `Mods` и `WorkshopItems` в `data/Server/servertest.ini`.
 
 ## Volumes
@@ -30,10 +30,6 @@ ssh -L 3001:127.0.0.1:3001 admin@<IP_СЕРВЕРА>
 - `panelbridge/` — `PanelBridge.lua` для веб-панели.
 
 Путь к файлам сервера задаётся через `PROJECT_ZOMBOID_DATA` в `.env`.
-
-## Настройки
-
-`config/default.txt` — обычный режим, `config/testing.txt` — тестовый. В файлах только ключи, отличающиеся от дефолта игры; их нужно перенести в настоящий конфиг сервера.
 
 ## ZombieBuddy
 

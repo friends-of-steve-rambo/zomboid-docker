@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "id": "server-default",
+    "name": "Базовые настройки для сервера",
+    "description": "Базовый пресет сервера\n- Заражение только через слюну\n- 1% спринтеров\n- Низкий респавн зомби\n- Вода и электричество отключаются в течение 0-2 месяцев\n- x2 опыт\n- Быстрое чтение\n- Убежища с респавном\n- SafetySystem выключен\n- Античит логирует нарушения (кроме no-clip и packet exception).",
+    "tags": [
+      "default",
+      "survival"
+    ],
+    "pzBuild": "42"
+  },
+  "sandboxVars": {
+    "settings": {
+      "ZombieRespawn": 3,
+      "WaterShut": 3,
+      "ElecShut": 3,
+      "MinutesPerPage": 0.5
+    },
+    "ZombieLore": {
+      "Transmission": 2,
+      "SprinterPercentage": 1
+    },
+    "MultiplierConfig": {
+      "Global": 2.0
+    }
+  },
+  "serverIni": {
+    "SafetySystem": false,
+    "PlayerSafehouse": true,
+    "SafehouseAllowRespawn": true,
+    "AntiCheatSafety": 3,
+    "AntiCheatSpeed": 3,
+    "AntiCheatHit": 3,
+    "AntiCheatPermission": 3,
+    "AntiCheatXP": 3,
+    "AntiCheatSafeHouse": 3,
+    "AntiCheatPlayer": 3,
+    "AntiCheatChecksum": 3
+  },
+  "iniExclusions": [
+    "RCONPassword",
+    "Password",
+    "ServerName",
+    "PublicName",
+    "DefaultPort",
+    "UDPPort",
+    "RCONPort",
+    "server_browser_announced_ip"
+  ],
+  "mods": [],
+  "map": {
+    "mapId": "Muldraugh, KY"
+  },
+  "difficulty": {
+    "level": "custom"
+  }
+}
