@@ -3,7 +3,7 @@
   "meta": {
     "id": "server-default",
     "name": "Базовые настройки для сервера",
-    "description": "Базовый пресет сервера\n- Заражение только через слюну\n- 1% спринтеров\n- Низкий респавн зомби\n- Вода и электричество отключаются в течение 0-2 месяцев\n- x2 опыт\n- Быстрое чтение\n- Убежища с респавном\n- SafetySystem выключен\n- Античит логирует нарушения (кроме no-clip и packet exception).",
+    "description": "Кооп-пресет: заражение слюной (смерть 2–3 дня), быстрые шатуны, плотность 0.75→1.0 (пик x2 к 42 дню), еда и прочий лут 0.5, до 35% зданий обчищены, вода/электричество до 2 мес., x2 опыт, быстрое чтение, стартовый набор, убежища с респавном, SafetySystem выкл., античит логирует.",
     "tags": [
       "default",
       "survival"
@@ -12,14 +12,24 @@
   },
   "sandboxVars": {
     "settings": {
+      "StarterKit": true,
       "ZombieRespawn": 3,
       "WaterShut": 3,
       "ElecShut": 3,
-      "MinutesPerPage": 0.5
+      "MinutesPerPage": 0.5,
+      "FoodLootNew": 0.5,
+      "OtherLootNew": 0.5,
+      "MaximumLooted": 35
     },
     "ZombieLore": {
       "Transmission": 2,
-      "SprinterPercentage": 1
+      "Speed": 2
+    },
+    "ZombieConfig": {
+      "PopulationStartMultiplier": 0.75,
+      "PopulationMultiplier": 1.0,
+      "PopulationPeakMultiplier": 2,
+      "PopulationPeakDay": 42
     },
     "MultiplierConfig": {
       "Global": 2.0
